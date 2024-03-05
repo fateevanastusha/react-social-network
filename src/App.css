@@ -7,28 +7,5 @@
     grid-template-columns: 2fr 10fr;
     grid-gap : 10px;
 }
-.header {
-    grid-area: header;
-    background-color: #fcd6dc;
-}
-.header img {
-    width: 80px;
-    margin-top: 10px;
-}
-.nav {
-    grid-area: nav;
-    background-color: #f3cb8a;
-    display: flex;
-    flex-direction: column;
-    gap : 10px;
-    padding: 10px;
-    color : #ffffff;
-    font-weight: 500;
-}
-.content {
-    grid-area: content;
-    background-color: #fcf1f2;
-}
-.content img {
-    width: 100%;
-}
+
+
