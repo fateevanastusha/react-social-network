@@ -1,4 +1,4 @@
-import {ADD_POSTS, UPDATE_NEW_POST} from "./constants/actionTypes";
+import {ADD_MESSAGE, ADD_POSTS, UPDATE_NEW_MESSAGE, UPDATE_NEW_POST} from "./constants/actionTypes";
 
 let store = {
     _state : {
@@ -76,7 +76,8 @@ let store = {
                 {"name": "Nathan", "id": 14, messages: []},
                 {"name": "Olivia", "id": 15, messages: []},
 
-            ]
+            ],
+            newMessage : ''
         }
     },
     _callSubscriber (state : any)  {
@@ -103,16 +104,22 @@ let store = {
             this._state.profilePage.newPostText = action.payload as string
             this._callSubscriber(this._state)
         }
+        if (action.type === ADD_MESSAGE) {
+            this._state.dialogsPage.chats
+                .find((chat) => {return chat.id === action.payload})
+                ?.messages.push( {"message": this._state.dialogsPage.newMessage, "id": new Date().valueOf(), "side": "right"})
+            this._state.dialogsPage.newMessage = ""
+            this._callSubscriber(this._state)
+        }
+        if (action.type === UPDATE_NEW_MESSAGE) {
+            this._state.dialogsPage.newMessage = action.payload as string
+            this._callSubscriber(this._state)
+        }
     }
 
 }
-export const addPostActionCreator = () => {
-    return {
-        type : ADD_POSTS
-    }
-}
-export const updateNewPostTestActionCreator = (text : string) => {
-    return { type : UPDATE_NEW_POST, payload : text}
-}
-
+export const addPostActionCreator = () => {return {type : ADD_POSTS}}
+export const updateNewPostTestActionCreator = (text : string) => {return { type : UPDATE_NEW_POST, payload : text}}
+export const addMessageActionCreator = (id : number) => {return {type : ADD_MESSAGE, payload : id}}
+export const updateNewMessageActionCreator = (text : string) => {return { type : UPDATE_NEW_MESSAGE, payload : text}}
 export default store
