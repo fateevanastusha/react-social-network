@@ -1,4 +1,6 @@
 import {ADD_MESSAGE, ADD_POSTS, UPDATE_NEW_MESSAGE, UPDATE_NEW_POST} from "./constants/actionTypes";
+import postsReducer from "./reducers/postsReducer";
+import dialogsReducer from "./reducers/dialogsReducer";
 
 let store = {
     _state : {
@@ -90,31 +92,9 @@ let store = {
         return this._state
     },
     dispatch(action : {type : string, payload : any}){
-        if (action.type === ADD_POSTS){
-            let newPost = {
-                id : this._state.profilePage.posts.length + 1,
-                text : this._state.profilePage.newPostText
-            }
-            // @ts-ignore
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        }
-        if (action.type === UPDATE_NEW_POST) {
-            this._state.profilePage.newPostText = action.payload as string
-            this._callSubscriber(this._state)
-        }
-        if (action.type === ADD_MESSAGE) {
-            this._state.dialogsPage.chats
-                .find((chat) => {return chat.id === action.payload})
-                ?.messages.push( {"message": this._state.dialogsPage.newMessage, "id": new Date().valueOf(), "side": "right"})
-            this._state.dialogsPage.newMessage = ""
-            this._callSubscriber(this._state)
-        }
-        if (action.type === UPDATE_NEW_MESSAGE) {
-            this._state.dialogsPage.newMessage = action.payload as string
-            this._callSubscriber(this._state)
-        }
+        this._state.profilePage = postsReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._callSubscriber(this._state)
     }
 
 }

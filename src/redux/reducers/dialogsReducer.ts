@@ -1,6 +1,6 @@
 import {ADD_MESSAGE, UPDATE_NEW_MESSAGE} from "../constants/actionTypes";
 
-const messagesReducer = (state : any, action : {type : string, payload : any}) => {
+const dialogsReducer = (state : any, action : {type : string, payload : any}) => {
     if (action.type === ADD_MESSAGE) {
         state.chats
             .find((chat : any) => {return chat.id === action.payload})
@@ -13,4 +13,4 @@ const messagesReducer = (state : any, action : {type : string, payload : any}) =
     return state
 }
 
-export default messagesReducer
+export default dialogsReducer
