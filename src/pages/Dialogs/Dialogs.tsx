@@ -2,14 +2,15 @@
 import styles from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {useRef} from "react";
 import {addMessageActionCreator, updateNewMessageActionCreator} from "../../redux/store";
+import {TPropsModel} from "../../App";
 
-const Dialogs = ( props : {state : object, dispatch : any}) => {
+const Dialogs = ( props : TPropsModel) => {
     const {state, dispatch} = props
     const location = useLocation();
-    const id = location.pathname.split('/')[location.pathname.split('/').length - 1]
+    const id = Number(location.pathname.split('/')[location.pathname.split('/').length - 1])
     const newMessageRef = useRef()
     const onMessageChange =  () => {
         // @ts-ignore
@@ -17,18 +18,16 @@ const Dialogs = ( props : {state : object, dispatch : any}) => {
         dispatch(updateNewMessageActionCreator(message))
     }
     const handleAddMessage = () => {
-        dispatch(addMessageActionCreator(Number(id)))
+        dispatch(addMessageActionCreator(id))
     }
     return (
         <div className={styles.content}>
             <div className={styles.list}>
-                {/*@ts-ignore*/}
                 {state.dialogsPage.chats.map((dialog => {
                     return <Dialog name={dialog.name} id={dialog.id} key={dialog.id}/>
                 }))}
             </div>
             <div className={styles.dialogs}>
-                {/*@ts-ignore*/}
                 {state.dialogsPage.chats.find((chat) => chat.id == id)?.messages.map((message) => {
                     return <Message text={message.message} id={message.id} side={message.side} key={message.id}/>
                 })}

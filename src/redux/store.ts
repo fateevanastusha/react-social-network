@@ -1,8 +1,9 @@
 import {ADD_MESSAGE, ADD_POSTS, UPDATE_NEW_MESSAGE, UPDATE_NEW_POST} from "./constants/actionTypes";
 import postsReducer from "./reducers/postsReducer";
 import dialogsReducer from "./reducers/dialogsReducer";
+import {TActionModel, TStoreModel} from "./types/storeModel";
 
-let store = {
+let store : TStoreModel = {
     _state : {
         profilePage : {
             newPostText : "new post",
@@ -91,14 +92,14 @@ let store = {
     getState  () {
         return this._state
     },
-    dispatch(action : {type : string, payload : any}){
+    dispatch(action : TActionModel){
         this._state.profilePage = postsReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._callSubscriber(this._state)
     }
 
 }
-export const addPostActionCreator = () => {return {type : ADD_POSTS}}
+export const addPostActionCreator = () : {type : string} => {return {type : ADD_POSTS}}
 export const updateNewPostTestActionCreator = (text : string) => {return { type : UPDATE_NEW_POST, payload : text}}
 export const addMessageActionCreator = (id : number) => {return {type : ADD_MESSAGE, payload : id}}
 export const updateNewMessageActionCreator = (text : string) => {return { type : UPDATE_NEW_MESSAGE, payload : text}}

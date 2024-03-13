@@ -5,8 +5,14 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Dialogs from "./pages/Dialogs/Dialogs";
 import Profile from "./pages/Profile/Profile";
+import {TActionModel, TStateModel} from "./redux/types/storeModel";
 
-const App = (props : {state : object, dispatch : any}) => {
+export type TPropsModel = {
+    state : TStateModel
+    dispatch : (action : TActionModel) => void
+}
+
+const App = (props : TPropsModel) => {
   const {state, dispatch} = props
   return (
       <Router>

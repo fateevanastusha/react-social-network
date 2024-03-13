@@ -2,7 +2,8 @@ import React from "react";
 // @ts-ignore
 import styles from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
-const Profile = (props : {state : object, dispatch : any}) => {
+import {TPropsModel} from "../../App";
+const Profile = (props : TPropsModel) => {
     const {state, dispatch} = props
     return (
         <div className={styles.content}>

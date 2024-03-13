@@ -1,14 +1,14 @@
 // @ts-ignore
 import styles from './MyPosts.module.css'
 import Post from "./Post/Post";
-import React from "react";
+import React, {LegacyRef, useRef} from "react";
 import {addPostActionCreator, updateNewPostTestActionCreator} from "../../../redux/store";
+import {TPropsModel} from "../../../App";
 
 
-const MyPosts = (props : {state : object, dispatch : any}) => {
+const MyPosts = (props : TPropsModel) => {
     const {state, dispatch} = props
-
-    let newPostElement = React.createRef()
+    let newPostElement = useRef<HTMLInputElement>(null)
     const handleAddPost = () => {
         dispatch(addPostActionCreator())
     }
@@ -19,13 +19,11 @@ const MyPosts = (props : {state : object, dispatch : any}) => {
     }
     return (
         <div className={styles.wrapper}>
-            {/*// @ts-ignore*/}
+            {/*@ts-ignore*/}
             <textarea ref={newPostElement}
                       onChange={onPostChange}
-                      // @ts-ignore
                       value={state.profilePage.newPostText}/>
             <button onClick={handleAddPost}>Add post</button>
-            {/*// @ts-ignore*/}
             {state.profilePage.posts.map((post) => {
                 return <Post postNumber={post.id} text={post.text}/>
             })}
