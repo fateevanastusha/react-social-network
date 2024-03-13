@@ -60,8 +60,8 @@ let store = {
     dispatch(action : {type : string, payload : any}){
         if (action.type === ADD_POSTS){
             let newPost = {
-                id : (new Date()).toISOString(),
-                message : this._state.profilePage.newPostText
+                id : this._state.profilePage.posts.length + 1,
+                text : this._state.profilePage.newPostText
             }
             // @ts-ignore
             this._state.profilePage.posts.push(newPost)

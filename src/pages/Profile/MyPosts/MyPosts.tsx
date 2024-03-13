@@ -18,8 +18,6 @@ const MyPosts = (props : {state : object, dispatch : any}) => {
         let text = newPostElement.current.value
         dispatch(updateNewPostTestActionCreator(text))
     }
-    // @ts-ignore
-    console.log(state.profilePage.newPostText)
 
     return (
         <div className={styles.wrapper}>

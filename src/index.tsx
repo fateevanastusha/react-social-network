@@ -7,8 +7,14 @@ import store from "./redux/store";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(
-  <React.StrictMode>
-    <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
-  </React.StrictMode>
-);
+const rerenderTree = (state : any) => {
+    root.render(
+        <React.StrictMode>
+            <App state={state} dispatch={store.dispatch.bind(store)} />
+        </React.StrictMode>
+    );
+
+}
+rerenderTree(store.getState())
+store.subscribe(rerenderTree)
+
