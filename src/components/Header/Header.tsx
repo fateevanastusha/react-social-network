@@ -5,8 +5,9 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <img
-                src={'https://images.vexels.com/media/users/3/272593/isolated/preview/2c91055c5e95c3e07ead4d39c0a2b2e8-minimalist-flower-icon.png'}
+                src={'https://artmot.ru/wp-content/uploads/2021/08/cropped-artmot.png'}
                 alt={'header'}/>
+            <h1>CLUP CLUP</h1>
         </header>
     )
 }

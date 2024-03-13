@@ -1,0 +1,10 @@
+.item {
+    text-decoration: none;
+    padding: 10px;
+    color : #858585;
+    font-weight: 300;
+}
+.item.active {
+    color : #ffffff;
+    background-color: #656565;
+}

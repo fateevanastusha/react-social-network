@@ -1,0 +1,28 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap : 15px;
+    padding: 10px ;
+}
+.content img {
+    border-radius: 10px;
+    width: 100%;
+}
+.profile {
+    display: flex;
+    gap : 20px;
+}
+.profile img {
+    width: 150px;
+    border-radius: 50%;
+}
+.description {
+    display: flex;
+    flex-direction: column;
+    font-weight: 200;
+    padding-top: 20px;
+}
+.title {
+    font-weight: 300;
+    font-size: 30px;
+}

@@ -1,0 +1,20 @@
+.item img {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+}
+.item {
+    padding: 10px;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.09);
+    gap : 10px;
+    border-radius: 10px ;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    font-weight: 100;
+}
+.buttons {
+    margin-left: auto;
+}

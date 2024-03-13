@@ -1,0 +1,15 @@
+.message {
+    width: fit-content;
+    max-width: 80%;
+    padding: 12px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 200;
+}
+.message.right {
+    margin-left: auto;
+}
+.message.left {
+    margin-right: auto;
+}
