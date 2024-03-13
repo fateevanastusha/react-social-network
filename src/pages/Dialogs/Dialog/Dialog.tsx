@@ -6,7 +6,7 @@ import styles from './Dialog.module.css'
 const Dialog = (props : TDialogProps) => {
     const location = useLocation();
     const {name, id } = props
-    return (<NavLink to={`dialogs/${id}`} className={location.pathname.split('/').includes(String(props.id)) ? `${styles.item} ${styles.active}`: styles.item}>
+    return (<NavLink to={`${id}`} className={location.pathname.split('/').includes(String(props.id)) ? `${styles.item} ${styles.active}`: styles.item}>
         {name}
     </NavLink>)
 }

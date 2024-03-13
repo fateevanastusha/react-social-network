@@ -12,13 +12,11 @@ const MyPosts = (props : {state : object, dispatch : any}) => {
     const handleAddPost = () => {
         dispatch(addPostActionCreator())
     }
-
     const onPostChange = () => {
         // @ts-ignore
         let text = newPostElement.current.value
         dispatch(updateNewPostTestActionCreator(text))
     }
-
     return (
         <div className={styles.wrapper}>
             {/*// @ts-ignore*/}
